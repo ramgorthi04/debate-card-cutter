@@ -58,7 +58,8 @@ def scrape_article(url):
         'author': author,
         'date': date
     }
-
-# # URL of the article to scrape
-# url = 'https://www.federalreserve.gov/econres/feds/redistribution-and-the-monetary-fiscal-policy-mix.htm'
-# scrape_article(url)
+    
+if __name__ == '__main__':
+    # URL of the article to scrape
+    url = 'https://www.federalreserve.gov/econres/feds/redistribution-and-the-monetary-fiscal-policy-mix.htm'
+    scrape_article(url)

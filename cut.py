@@ -148,14 +148,15 @@ def llm_cut_article(title, author, date, body_text, tag_line) -> dict:
 def format_card(card_formatting) -> None:
     pass 
 
-url = 'https://www.democrats.senate.gov/newsroom/press-releases/majority-leader-schumer-floor-remarks-on-the-release-of-the-roadmap-for-ai-policy-by-the-senate-bipartisan-senate-ai-working-group'
-article_info = scrape_article(url)
+if __name__ == '__main__':
+    url = 'https://www.democrats.senate.gov/newsroom/press-releases/majority-leader-schumer-floor-remarks-on-the-release-of-the-roadmap-for-ai-policy-by-the-senate-bipartisan-senate-ai-working-group'
+    article_info = scrape_article(url)
 
-# Pass the extracted information to the call_openai_api function
-title = article_info['title']
-author = article_info['author']
-date = article_info['date']
-body_text = article_info['body']
-tag_line = "There is a Senate AI bill on the floor now" 
+    # Pass the extracted information to the call_openai_api function
+    title = article_info['title']
+    author = article_info['author']
+    date = article_info['date']
+    body_text = article_info['body']
+    tag_line = "There is a Senate AI bill on the floor now" 
 
-print(json.dumps((llm_cut_article(title, author, date, body_text, tag_line)), indent=4))
+    print(json.dumps((llm_cut_article(title, author, date, body_text, tag_line)), indent=4))
