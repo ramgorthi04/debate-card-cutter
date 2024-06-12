@@ -1,13 +1,14 @@
 ## Simple Card Cutter
-This is a quick proof of concept that we can now cut cards fairly easily with AI. As LLM technology improves, this card cutter will only get better.
-The vision for this project is an agent that takes an argument and autonomously researches and cuts evidence for it. 
+quick POC that we can cut cards with AI. 
+
+goal is an agent that takes an argument and autonomously researches and cuts evidence for it. 
 
 ## Set-up
 **Python 3.10**
 Configure virtual environment (optional)
 
 Perplexity research agent:
-I have a prototype but it's using my API key and its expensive. I applied for free access. If I get it, I'll push it here for people to use if they want.
+prototyped, but expensive and buggy (even more than the card cutter!).
 
 Card-cutting agent:
 ```bash
@@ -24,6 +25,7 @@ python cutter.py "url" "tag-line"
 
 ## Design
 Take as input URL and tag-line. Output word document with formatted and cited card.
+Remainder of README is largely AI-generated based off my code.
 
 ### Scrape Website
 
