@@ -1,13 +1,22 @@
+## Simple Card Cutter
+This is a quick proof of concept that we can now cut cards fairly easily with AI. As LLM technology improves, this card cutter will only get better.
+The vision for this project is an agent that takes an argument and autonomously researches and cuts evidence for it. 
+
 ## Set-up
 **Python 3.10**
 Configure virtual environment (optional)
+
+Perplexity research agent:
+I have a prototype but it's using my API key and its expensive. I applied for free access. If I get it, I'll push it here for people to use if they want.
+
+Card-cutting agent:
 ```bash
 pip install -r requirements.txt
-python cutter.py
+python cutter.py "url" "tag-line"
 ```
 
 ## Evidence Ethics Guarantees
-- All outputted card-text was scraped via Python Beautiful Soup
+- All outputted card-text is scraped via Python Beautiful Soup
 - *Nothing* is added or deleted from what the HTTP request returns. This comes at the cost of significant design complexity and additional latency. 
 - The citation is accurate to the best ability of the web scraping tool (which is pretty low).
 
@@ -16,19 +25,36 @@ python cutter.py
 ## Design
 Take as input URL and tag-line. Output word document with formatted and cited card.
 
-### Scrape website
-Index card text -> formatting_table[n][3]
-Determine sentences/phrases relevant to argument (underline) -> list[], split into words + spaces/symbols/miscellaneous -> list[][]
-Determine words to emphasize (bold) in underlined sentences -> list[], split into words + spaces/symbols/miscellaneous -> list[][]
-Determine words to speak (highlight) in underlined sentences -> list[], split -> list[][]
+### Scrape Website
 
-### Clean lists in O(n):
-- Check that word(s) at lest one of the left and right of each word in underlined words matches either a left or right word in all_words. This check makes sure the algorithm won't trip by trying to underline a sentence or phrase that doesn't exist.
+1. **Index Card Text**
+   - Formatting Table: `formatting_table[n][3]`
 
-### Build formatting_table in O(n):
-- Use index pointers for parallel list traversal
-- Check if current word matches current word in underline/highlight/bold list. Always increment the all_words pointer, but only increment the underline/bold/highlight words pointer when we find a match. This maintains the order of the underlining/bolding/highlighting.
+2. **Determine Relevant Sentences/Phrases for Argument**
+   - Underline: `list[]`
+   - Split into Words + Spaces/Symbols/Miscellaneous: `list[][]`
 
-### Format word document in O(n):
-- Build card citation with `article_info` from soup
-- Use formatting table to build maximal runs of continuous formatting (if underlining/bolding/highlighting changes, we need to create a new run)
+3. **Determine Words to Emphasize in Underlined Sentences**
+   - Bold: `list[]`
+   - Split into Words + Spaces/Symbols/Miscellaneous: `list[][]`
+
+4. **Determine Words to Speak in Underlined Sentences**
+   - Highlight: `list[]`
+   - Split: `list[][]`
+
+### Clean Lists in O(n)
+
+- Ensure at least one of the words to the left or right of each word in underlined words matches either a left or right word in `all_words`. This check prevents the algorithm from underlining a non-existent sentence or phrase.
+
+### Build Formatting Table in O(n)
+
+- Use Index Pointers for Parallel List Traversal:
+  - Check if the current word matches the current word in underline/bold/highlight list.
+  - Always increment the `all_words` pointer.
+  - Increment the underline/bold/highlight words pointer only on a match. This maintains the order of underlining/bolding/highlighting.
+
+### Format Word Document in O(n)
+
+- Build Card Citation with `article_info` from soup.
+- Use Formatting Table to Build Maximal Runs of Continuous Formatting:
+  - Create a new run if underlining/bolding/highlighting changes.
