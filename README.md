@@ -3,6 +3,8 @@ quick POC that we can cut cards with AI.
 
 goal is an agent that takes an argument and autonomously researches and cuts evidence for it. 
 
+If I was re-doing this, I would convert the article text into a 2D array (word, index) and use API integrations to determine which indices should be underlined, bolded, highlighted. 
+
 ## Set-up
 **Python 3.10**
 Configure virtual environment (optional)
