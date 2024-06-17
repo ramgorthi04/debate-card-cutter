@@ -1,22 +1,19 @@
 ## Simple Card Cutter
 quick POC that we can cut cards with AI. 
+this is an agent that takes an argument and autonomously researches and cuts evidence for it. 
 
-goal is an agent that takes an argument and autonomously researches and cuts evidence for it. 
-
-If I was re-doing this, I would convert the article text into a 2D array (word, index) and use API integrations to determine which indices should be underlined, bolded, highlighted. 
+Note 07-17-2024: Just added functionality to download and read PDFs. Haven't fixed author citations. Also, integrated the Perplexity research code.
 
 ## Set-up
 **Python 3.10**
-Configure virtual environment (optional)
+You need to create your own API keys and export on command line as 'perplexity_api_key' and 'openai_api_key'
 
-Perplexity research agent:
-prototyped, but expensive and buggy (even more than the card cutter!).
-
-Card-cutting agent:
+Should cost about ~1-2 cents per card cut
 ```bash
 pip install -r requirements.txt
-python cutter.py "url" "tag-line"
+python cutter.py "argument""
 ```
+This will find 2 sources to support the argument, cut them as formatted cards, and output them in a word doc saved in the folder the file is run in.
 
 ## Evidence Ethics Guarantees
 - All outputted card-text is scraped via Python Beautiful Soup
@@ -46,18 +43,18 @@ Remainder of README is largely AI-generated based off my code.
    - Highlight: `list[]`
    - Split: `list[][]`
 
-### Clean Lists in O(n)
+### Clean Lists - O(n)
 
 - Ensure at least one of the words to the left or right of each word in underlined words matches either a left or right word in `all_words`. This check prevents the algorithm from underlining a non-existent sentence or phrase.
 
-### Build Formatting Table in O(n)
+### Build Formatting Table - O(n)
 
 - Use Index Pointers for Parallel List Traversal:
   - Check if the current word matches the current word in underline/bold/highlight list.
   - Always increment the `all_words` pointer.
   - Increment the underline/bold/highlight words pointer only on a match. This maintains the order of underlining/bolding/highlighting.
 
-### Format Word Document in O(n)
+### Format Word Document - O(n)
 
 - Build Card Citation with `article_info` from soup.
 - Use Formatting Table to Build Maximal Runs of Continuous Formatting:
