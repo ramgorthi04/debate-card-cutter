@@ -7,11 +7,12 @@ from docx.enum.text import WD_UNDERLINE
 from docx.enum.text import WD_COLOR_INDEX
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
-from scraper import *
+from scraper_test import *
 from tools import *
 import time
 from datetime import date
 import argparse
+from research import *
 
 
 GPT_MODEL = "gpt-4o-2024-05-13"
@@ -34,9 +35,9 @@ def llm_get_text_to_underline(body_text: str, tag_line: str) -> list:
     
     # Underline 50% of the sentences
     num_sentences_to_underline = int(num_sentences * 0.3)
-    prompt = f"""Given the following article text, return a list of the sentences and phrases in the order they appear that best support this argument: {tag_line}. Aim to have {num_sentences_to_underline} sentences underlined.
+    prompt = f"""Given the following text, return a list of the sentences and phrases that support this argument: {tag_line}. The sentences must be IN THE ORDER they appear in the text. Do not include ANY words that are not present in the article. 
     
-    Return your response as a JSON in this form ["SENTENCE/PHRASE 1", "SENTENCE/PHRASE 2", "SENTENCE/PHRASE 3", ...]
+    Return your response as a JSON in this form ["FIRST SENTENCE/PHRASE", "SECOND SENTENCE/PHRASE", "THIRD SENTENCE/PHRASE", ...]
     
     Article: {body_text}"""
     underlined_text_list = get_gpt_response(prompt, gpt_model=GPT_MODEL, json_mode=True)
@@ -324,7 +325,8 @@ def format_card(article_info: dict, tag: str, all_text: str, underlined_text_lis
     
     # Remove bad characters from words
     indices_to_remove = []
-    indices_to_remove.extend(word_dict['\xa0'])
+    if '\xa0' in word_dict:
+        indices_to_remove.extend(word_dict['\xa0'])
     for index in indices_to_remove:
         text_elements[index] = ' '
     
@@ -543,6 +545,8 @@ def cut_card(tag: str, url: str) -> None:
     body_text = article_info['body']
     tag_line = tag
 
+    if body_text is None or body_text == "":
+        return None
     underlined_text_list, bolded_text_list, highlighted_text_list = llm_cut_article(title, author, date, body_text, tag_line)
     
     if underlined_text_list is None:
@@ -565,12 +569,19 @@ def cut_card(tag: str, url: str) -> None:
         print(f"Card cutting execution time: {time.time() - start_time} seconds")
     
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Process URL and tag.")
-    parser.add_argument('url', type=str, help='The URL to be processed')
-    parser.add_argument('tag', type=str, help='The tag to be used')
+    parser = argparse.ArgumentParser(description="Process argument.")
+    parser.add_argument('argument', type=str, help='The argument you want evidence for!')
 
     args = parser.parse_args()
 
-    cut_card(args.tag, args.url)
+    sources_and_tags = get_sources(args.argument)
+    
+    if sources_and_tags == {}: # re-try once
+        sources_and_tags = get_sources(args.argument)
+        if sources_and_tags == {}:
+            exit
+    
+    for source, tag in sources_and_tags.items():
+        cut_card(tag, source)
 
     
