@@ -100,9 +100,13 @@ def scrape_article(url):
             html_content = response.content
             metadata = extract_metadata_from_html(html_content)
         else:
-            raise Exception(f"Unsupported content type: {content_type}")
+            print("Scrape failed, unsupported content type: {content_type}")
+            # raise Exception(f"Unsupported content type: {content_type}")
+            return 
     else:
-        raise Exception(f"Failed to fetch content. Status code: {response.status_code}")
+        # raise Exception(f"Failed to fetch content. Status code: {response.status_code}")
+        print(f"Scrape failed, status code: {response.status_code}")
+        return 
 
     metadata['url'] = url
 

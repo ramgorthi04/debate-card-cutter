@@ -4,7 +4,7 @@ import json
 
 PERPLEXITY_API_KEY = os.getenv("perplexity_api_key")
 
-def get_sources(tag_line):
+def get_sources(tag_line, num_cards):
     messages = [
         {
             "role": "system",
@@ -15,7 +15,7 @@ def get_sources(tag_line):
         {
             "role": "user",
             "content": (
-                f"""Find sources supporting this argument: {tag_line}. Return your response as a JSON in this form:
+                f"""Find {num_cards} sources supporting this argument: {tag_line}. Return your response as a JSON in this form:
     {{
         "Source 1 URL": "10-word summary of main argument in source 1",
         "Source 2 URL": "10-word summary of main argument in source 2"

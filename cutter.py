@@ -419,7 +419,7 @@ def format_card(article_info: dict, tag: str, all_text: str, underlined_text_lis
     
     # Now we have the formatting table, we can create the word document    
 
-   # Splice formatting table by removing paragraphs at beginning/end with no underlining - OPTIONAL
+    # Splice formatting table by removing paragraphs at beginning/end with no underlining - OPTIONAL
     # formatting_table = splice_card_top_bottom(formatting_table)
     
     # Now turn double paragraph breaks into single paragraph breaks
@@ -528,7 +528,10 @@ def cut_card(tag: str, url: str) -> None:
     if article_info is None:
         return
     # Remove any double-quotes in the article body and replace with single quotes
-    article_info['body'] = article_info['body'].replace('"', "'")
+    if 'body' in article_info:
+        article_info['body'] = article_info['body'].replace('"', "'")
+    else:
+        return None
     
     if __debug__:
         print(f"Scrape article execution time: {time.time() - start_time} seconds")
@@ -571,10 +574,11 @@ def cut_card(tag: str, url: str) -> None:
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Process argument.")
     parser.add_argument('argument', type=str, help='The argument you want evidence for!')
+    parser.add_argument('num_cards', type=str, help='The number of cards you want!')
 
     args = parser.parse_args()
 
-    sources_and_tags = get_sources(args.argument)
+    sources_and_tags = get_sources(args.argument, args.num_cards)
     
     if sources_and_tags == {}: # re-try once
         sources_and_tags = get_sources(args.argument)
