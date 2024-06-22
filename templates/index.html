@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Card Cutter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Generate Cards</h1>
+        <form method="POST">
+            <label for="user_input">Enter your argument:</label>
+            <input type="text" id="user_input" name="user_input" required>
+            <label for="n">Enter the number of cards:</label>
+            <input type="number" id="n" name="n" required>
+            <button type="submit">Generate</button>
+        </form>
+        {% if files %}
+            <h2>Generated Cards for {{ arg }}:</h2>
+            <ul>
+                {% for file in files %}
+                    <li><a href="{{ url_for('download_file', filename=file) }}">{{ file }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <h2>Log Output:</h2>
+        <pre id="log-output"></pre>
+    </div>
+    <script>
+        const eventSource = new EventSource("{{ url_for('logs') }}");
+        eventSource.onmessage = function(event) {
+            const logOutput = document.getElementById("log-output");
+            // Prepend the new log message to the top
+            logOutput.textContent = event.data + "\n" + logOutput.textContent;
+        };
+    </script>
+</body>
+</html>

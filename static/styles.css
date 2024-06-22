@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+input, button {
+    display: block;
+    margin: 10px auto;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+/* Ensure the logs start from the leftmost side */
+#log-output {
+    text-align: left;
+    padding: 0; /* Remove any padding */
+    margin: 0; /* Remove any margin */
+}

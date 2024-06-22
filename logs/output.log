@@ -1,0 +1,292 @@
+2024-06-22 12:24:12,710 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.20.10.2:5000
+2024-06-22 12:24:12,710 - INFO - [33mPress CTRL+C to quit[0m
+2024-06-22 12:24:12,711 - INFO -  * Restarting with stat
+2024-06-22 12:24:13,054 - WARNING -  * Debugger is active!
+2024-06-22 12:24:13,061 - INFO -  * Debugger PIN: 128-223-004
+2024-06-22 12:24:13,936 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:13] "GET /logs HTTP/1.1" 200 -
+2024-06-22 12:24:18,603 - INFO - HTTP Request: POST https://api.perplexity.ai/chat/completions "HTTP/1.1 200 OK"
+2024-06-22 12:24:19,052 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:19] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2024-06-22 12:24:19,086 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:19] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-06-22 12:24:19,086 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:19] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-06-22 12:24:19,138 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:19] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-06-22 12:24:19,278 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:19] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-06-22 12:24:35,937 - INFO - HTTP Request: POST https://api.perplexity.ai/chat/completions "HTTP/1.1 200 OK"
+2024-06-22 12:24:36,398 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:36] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2024-06-22 12:24:36,421 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:36] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-06-22 12:24:36,424 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:36] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-06-22 12:24:36,455 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:36] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-06-22 12:24:36,552 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:36] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-06-22 12:24:39,461 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:39] "GET / HTTP/1.1" 200 -
+2024-06-22 12:24:39,472 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:39] "GET /static/styles.css HTTP/1.1" 200 -
+2024-06-22 12:24:39,479 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:39] "GET /logs HTTP/1.1" 200 -
+2024-06-22 12:24:57,286 - INFO - HTTP Request: POST https://api.perplexity.ai/chat/completions "HTTP/1.1 200 OK"
+2024-06-22 12:24:57,925 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:57] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2024-06-22 12:24:57,938 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:57] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-06-22 12:24:57,939 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:57] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-06-22 12:24:57,946 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:57] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-06-22 12:24:57,960 - INFO - 127.0.0.1 - - [22/Jun/2024 12:24:57] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-06-22 12:25:19,326 - INFO -  * Detected change in '/Users/ram/Dartmouth College Dropbox/Ram Gorthi/Projects/debate-card-cutter/cutter.py', reloading
+2024-06-22 12:25:19,412 - INFO -  * Restarting with stat
+2024-06-22 12:25:19,881 - WARNING -  * Debugger is active!
+2024-06-22 12:25:19,887 - INFO -  * Debugger PIN: 128-223-004
+2024-06-22 12:25:21,981 - INFO -  * Detected change in '/Users/ram/Dartmouth College Dropbox/Ram Gorthi/Projects/debate-card-cutter/cutter.py', reloading
+2024-06-22 12:25:22,058 - INFO -  * Restarting with stat
+2024-06-22 12:25:22,427 - WARNING -  * Debugger is active!
+2024-06-22 12:25:22,432 - INFO -  * Debugger PIN: 128-223-004
+2024-06-22 12:25:27,306 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.20.10.2:5000
+2024-06-22 12:25:27,306 - INFO - [33mPress CTRL+C to quit[0m
+2024-06-22 12:25:27,306 - INFO -  * Restarting with stat
+2024-06-22 12:25:27,661 - WARNING -  * Debugger is active!
+2024-06-22 12:25:27,666 - INFO -  * Debugger PIN: 128-223-004
+2024-06-22 12:25:32,277 - INFO - 127.0.0.1 - - [22/Jun/2024 12:25:32] "GET / HTTP/1.1" 200 -
+2024-06-22 12:25:32,297 - INFO - 127.0.0.1 - - [22/Jun/2024 12:25:32] "GET /static/styles.css HTTP/1.1" 200 -
+2024-06-22 12:25:32,300 - INFO - 127.0.0.1 - - [22/Jun/2024 12:25:32] "GET /logs HTTP/1.1" 200 -
+2024-06-22 12:25:34,177 - INFO - 127.0.0.1 - - [22/Jun/2024 12:25:34] "GET / HTTP/1.1" 200 -
+2024-06-22 12:25:34,195 - INFO - 127.0.0.1 - - [22/Jun/2024 12:25:34] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-06-22 12:25:34,201 - INFO - 127.0.0.1 - - [22/Jun/2024 12:25:34] "GET /logs HTTP/1.1" 200 -
+2024-06-22 12:25:44,599 - INFO - HTTP Request: POST https://api.perplexity.ai/chat/completions "HTTP/1.1 200 OK"
+2024-06-22 12:25:45,175 - INFO - 127.0.0.1 - - [22/Jun/2024 12:25:45] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2024-06-22 12:25:45,195 - INFO - 127.0.0.1 - - [22/Jun/2024 12:25:45] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-06-22 12:25:45,195 - INFO - 127.0.0.1 - - [22/Jun/2024 12:25:45] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-06-22 12:25:45,213 - INFO - 127.0.0.1 - - [22/Jun/2024 12:25:45] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-06-22 12:25:45,225 - INFO - 127.0.0.1 - - [22/Jun/2024 12:25:45] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-06-22 12:26:11,615 - INFO -  * Detected change in '/Users/ram/Dartmouth College Dropbox/Ram Gorthi/Projects/debate-card-cutter/cutter.py', reloading
+2024-06-22 12:26:11,690 - INFO -  * Restarting with stat
+2024-06-22 12:26:12,114 - WARNING -  * Debugger is active!
+2024-06-22 12:26:12,119 - INFO -  * Debugger PIN: 128-223-004
+2024-06-22 12:47:08,254 - INFO - 127.0.0.1 - - [22/Jun/2024 12:47:08] "GET / HTTP/1.1" 200 -
+2024-06-22 12:47:08,270 - INFO - 127.0.0.1 - - [22/Jun/2024 12:47:08] "GET /static/styles.css HTTP/1.1" 200 -
+2024-06-22 12:47:08,273 - INFO - 127.0.0.1 - - [22/Jun/2024 12:47:08] "GET /logs HTTP/1.1" 200 -
+2024-06-22 12:55:19,984 - INFO - 127.0.0.1 - - [22/Jun/2024 12:55:19] "GET /logs HTTP/1.1" 200 -
+2024-06-22 17:35:25,407 - INFO -  * Detected change in '/Users/ram/Dartmouth College Dropbox/Ram Gorthi/Projects/debate-card-cutter/scraper.py', reloading
+2024-06-22 17:35:25,531 - INFO -  * Restarting with stat
+2024-06-22 17:35:26,145 - WARNING -  * Debugger is active!
+2024-06-22 17:35:26,152 - INFO -  * Debugger PIN: 128-223-004
+2024-06-22 17:35:27,224 - INFO -  * Detected change in '/Users/ram/Dartmouth College Dropbox/Ram Gorthi/Projects/debate-card-cutter/scraper.py', reloading
+2024-06-22 17:35:27,318 - INFO -  * Restarting with stat
+2024-06-22 17:35:27,671 - WARNING -  * Debugger is active!
+2024-06-22 17:35:27,675 - INFO -  * Debugger PIN: 128-223-004
+2024-06-22 17:37:26,280 - INFO -  * Detected change in '/Users/ram/Dartmouth College Dropbox/Ram Gorthi/Projects/debate-card-cutter/scraper.py', reloading
+2024-06-22 17:37:26,356 - INFO -  * Restarting with stat
+2024-06-22 17:37:26,784 - WARNING -  * Debugger is active!
+2024-06-22 17:37:26,789 - INFO -  * Debugger PIN: 128-223-004
+2024-06-22 17:37:41,554 - INFO -  * Detected change in '/Users/ram/Dartmouth College Dropbox/Ram Gorthi/Projects/debate-card-cutter/scraper.py', reloading
+2024-06-22 17:37:41,633 - INFO -  * Restarting with stat
+2024-06-22 17:37:42,108 - WARNING -  * Debugger is active!
+2024-06-22 17:37:42,113 - INFO -  * Debugger PIN: 128-223-004
+2024-06-22 17:38:47,919 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.20.10.2:5000
+2024-06-22 17:38:47,919 - INFO - [33mPress CTRL+C to quit[0m
+2024-06-22 17:38:47,920 - INFO -  * Restarting with stat
+2024-06-22 17:38:48,266 - WARNING -  * Debugger is active!
+2024-06-22 17:38:48,272 - INFO -  * Debugger PIN: 128-223-004
+2024-06-22 17:38:59,961 - INFO - 127.0.0.1 - - [22/Jun/2024 17:38:59] "GET /logs HTTP/1.1" 200 -
+2024-06-22 17:39:05,482 - INFO - 127.0.0.1 - - [22/Jun/2024 17:39:05] "GET / HTTP/1.1" 200 -
+2024-06-22 17:39:05,497 - INFO - 127.0.0.1 - - [22/Jun/2024 17:39:05] "GET /static/styles.css HTTP/1.1" 200 -
+2024-06-22 17:39:05,499 - INFO - 127.0.0.1 - - [22/Jun/2024 17:39:05] "GET /logs HTTP/1.1" 200 -
+2024-06-22 17:39:30,002 - INFO - 127.0.0.1 - - [22/Jun/2024 17:39:30] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+2024-06-22 17:39:30,012 - INFO - 127.0.0.1 - - [22/Jun/2024 17:39:30] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-06-22 17:39:30,013 - INFO - 127.0.0.1 - - [22/Jun/2024 17:39:30] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-06-22 17:39:30,017 - INFO - 127.0.0.1 - - [22/Jun/2024 17:39:30] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-06-22 17:39:30,038 - INFO - 127.0.0.1 - - [22/Jun/2024 17:39:30] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-06-22 17:39:42,461 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.20.10.2:5000
+2024-06-22 17:39:42,462 - INFO - [33mPress CTRL+C to quit[0m
+2024-06-22 17:39:42,462 - INFO -  * Restarting with stat
+2024-06-22 17:39:42,810 - WARNING -  * Debugger is active!
+2024-06-22 17:39:42,816 - INFO -  * Debugger PIN: 128-223-004
+2024-06-22 17:39:46,978 - INFO - 127.0.0.1 - - [22/Jun/2024 17:39:46] "GET /logs HTTP/1.1" 200 -
+2024-06-22 17:39:47,950 - INFO - 127.0.0.1 - - [22/Jun/2024 17:39:47] "GET / HTTP/1.1" 200 -
+2024-06-22 17:39:47,967 - INFO - 127.0.0.1 - - [22/Jun/2024 17:39:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-06-22 17:39:47,973 - INFO - 127.0.0.1 - - [22/Jun/2024 17:39:47] "GET /logs HTTP/1.1" 200 -
+2024-06-22 17:39:57,753 - INFO - HTTP Request: POST https://api.perplexity.ai/chat/completions "HTTP/1.1 200 OK"
+2024-06-22 17:39:58,521 - INFO - Calling llm_cut_article with title: Research: The Future Financial Status of the Social Security Program, author: None, date: None, tag_line: Social Security can be restored to solvency with adjustments.
+2024-06-22 17:39:58,521 - INFO - Calling llm_get_text_to_underline with body_text and tag_line.
+2024-06-22 17:40:01,773 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-06-22 17:40:01,782 - INFO - Underlined text list successfully parsed.
+2024-06-22 17:40:01,783 - INFO - Underlined text list: ['adjustments to taxes or benefits that offset the effects of the lower birth rate may restore solvency for the Social Security program on a sustainable basis for the foreseeable future', 'The Social Security Board of Trustees project that changes equivalent to an immediate reduction in benefits of about 13 percent, or an immediate increase in the combined payroll tax rate from 12.4 percent to 14.4 percent, or some combination of these changes, would be sufficient to allow full payment of the scheduled benefits for the next 75 years', 'Further modifications of the program are a certainty as the Congress continues to evolve and shape this program, reflecting the desires of each new generation', 'It is clear that modifications of the program benefit and tax levels can be made within the current program structure to restore sound financial status']
+2024-06-22 17:40:01,783 - INFO - Calling llm_get_text_to_bold with underlined_text and tag_line.
+2024-06-22 17:40:03,396 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-06-22 17:40:03,401 - INFO - Bolded words list before parsing: 
+[
+    "adjustments",
+    "taxes",
+    "benefits",
+    "restore",
+    "solvency",
+    "Social Security",
+    "sustainable",
+    "immediate",
+    "reduction",
+    "increase",
+    "combined payroll tax",
+    "full payment",
+    "75 years",
+    "certainty",
+    "Congress",
+    "modifications",
+    "desires",
+    "restore",
+    "sound financial status"
+]
+
+2024-06-22 17:40:03,402 - INFO - Bolded words list: ['adjustments,', 'taxes,', 'benefits,', 'restore,', 'solvency,', 'Social', 'Security,', 'sustainable,', 'immediate,', 'reduction,', 'increase,', 'combined', 'payroll', 'tax,', 'full', 'payment,', '75', 'years,', 'certainty,', 'Congress,', 'modifications,', 'desires,', 'restore,', 'sound', 'financial', 'status']
+2024-06-22 17:40:03,402 - INFO - Calling llm_get_text_to_highlight with underlined_text and tag_line.
+2024-06-22 17:40:05,744 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-06-22 17:40:05,772 - INFO - Highlighted text list: 
+[
+    "adjustments to taxes or benefits that offset the effects of the lower birth rate may restore solvency for the Social Security program on a sustainable basis for the foreseeable future",
+    "The Social Security Board of Trustees project that changes equivalent to an immediate reduction in benefits of about 13 percent, or an immediate increase in the combined payroll tax rate from 12.4 percent to 14.4 percent, or some combination of these changes, would be sufficient to allow full payment of the scheduled benefits for the next 75 years",
+    "It is clear that modifications of the program benefit and tax levels can be made within the current program structure to restore sound financial status"
+]
+
+2024-06-22 17:40:05,773 - INFO - Processing highlighted text
+2024-06-22 17:40:05,773 - INFO - Underlined text list: ['adjustments to taxes or benefits that offset the effects of the lower birth rate may restore solvency for the Social Security program on a sustainable basis for the foreseeable future', 'The Social Security Board of Trustees project that changes equivalent to an immediate reduction in benefits of about 13 percent, or an immediate increase in the combined payroll tax rate from 12.4 percent to 14.4 percent, or some combination of these changes, would be sufficient to allow full payment of the scheduled benefits for the next 75 years', 'Further modifications of the program are a certainty as the Congress continues to evolve and shape this program, reflecting the desires of each new generation', 'It is clear that modifications of the program benefit and tax levels can be made within the current program structure to restore sound financial status']
+2024-06-22 17:40:05,774 - INFO - Bolded text list: ['adjustments,', 'taxes,', 'benefits,', 'restore,', 'solvency,', 'Social', 'Security,', 'sustainable,', 'immediate,', 'reduction,', 'increase,', 'combined', 'payroll', 'tax,', 'full', 'payment,', '75', 'years,', 'certainty,', 'Congress,', 'modifications,', 'desires,', 'restore,', 'sound', 'financial', 'status']
+2024-06-22 17:40:05,774 - INFO - Highlighted text list: ['adjustments to taxes or benefits that offset the effects of the lower birth rate may restore solvency for the Social Security program on a sustainable basis for the foreseeable future', 'The Social Security Board of Trustees project that changes equivalent to an immediate reduction in benefits of about 13 percent, or an immediate increase in the combined payroll tax rate from 12.4 percent to 14.4 percent, or some combination of these changes, would be sufficient to allow full payment of the scheduled benefits for the next 75 years', 'It is clear that modifications of the program benefit and tax levels can be made within the current program structure to restore sound financial status']
+2024-06-22 17:40:05,775 - INFO - Final card formatting: {
+    "underline": [
+        "adjustments to taxes or benefits that offset the effects of the lower birth rate may restore solvency for the Social Security program on a sustainable basis for the foreseeable future",
+        "The Social Security Board of Trustees project that changes equivalent to an immediate reduction in benefits of about 13 percent, or an immediate increase in the combined payroll tax rate from 12.4 percent to 14.4 percent, or some combination of these changes, would be sufficient to allow full payment of the scheduled benefits for the next 75 years",
+        "Further modifications of the program are a certainty as the Congress continues to evolve and shape this program, reflecting the desires of each new generation",
+        "It is clear that modifications of the program benefit and tax levels can be made within the current program structure to restore sound financial status"
+    ],
+    "bold": [
+        "adjustments,",
+        "taxes,",
+        "benefits,",
+        "restore,",
+        "solvency,",
+        "Social",
+        "Security,",
+        "sustainable,",
+        "immediate,",
+        "reduction,",
+        "increase,",
+        "combined",
+        "payroll",
+        "tax,",
+        "full",
+        "payment,",
+        "75",
+        "years,",
+        "certainty,",
+        "Congress,",
+        "modifications,",
+        "desires,",
+        "restore,",
+        "sound",
+        "financial",
+        "status"
+    ],
+    "highlight": [
+        "adjustments to taxes or benefits that offset the effects of the lower birth rate may restore solvency for the Social Security program on a sustainable basis for the foreseeable future",
+        "The Social Security Board of Trustees project that changes equivalent to an immediate reduction in benefits of about 13 percent, or an immediate increase in the combined payroll tax rate from 12.4 percent to 14.4 percent, or some combination of these changes, would be sufficient to allow full payment of the scheduled benefits for the next 75 years",
+        "It is clear that modifications of the program benefit and tax levels can be made within the current program structure to restore sound financial status"
+    ]
+}
+2024-06-22 17:40:06,447 - INFO - Calling llm_cut_article with title: 
+	What Does Social Security Insolvency Mean? | American Enterprise Institute - AEI, author: None, date: None, tag_line: Insolvency does not mean massive benefit cuts or financial burden.
+2024-06-22 17:40:06,447 - INFO - Calling llm_get_text_to_underline with body_text and tag_line.
+2024-06-22 17:40:10,349 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-06-22 17:40:10,377 - INFO - Underlined text list successfully parsed.
+2024-06-22 17:40:10,378 - INFO - Underlined text list: ['In this government-wide perspective, neither the cost of Social Security nor the federal government’s ability to bear that cost change very much when Social Security becomes insolvent.', 'The only thing that changes is that Social Security would no longer have the legal right to call upon federal resources over and above its own dedicated taxes.', 'Whether the federal government should nevertheless continue transferring those additional funds is a public policy argument, not an economic one.', 'Continuing such transfers would prevent a 20 percent across-the-board cut in Social Security benefits, hardly a trivial matter.', 'While having the Social Security trust fund does not make it easier for the federal government to pay Social Security benefits, the converse is that not having a Social Security trust fund would not make it harder to pay benefits.', 'In either case, Congress is transferring general tax revenues to Social Security and could, subject to the federal government’s resources, continue to do so.', 'But neither of these important facts should lead observers to conclude that the insolvency of Social Security would in fact lead to massive benefit cuts or an increased financial burden on the federal government as a whole.']
+2024-06-22 17:40:10,378 - INFO - Calling llm_get_text_to_bold with underlined_text and tag_line.
+2024-06-22 17:40:12,135 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-06-22 17:40:12,159 - INFO - Bolded words list before parsing: 
+[
+    "insolvency", 
+    "mean", 
+    "massive", 
+    "benefit", 
+    "cuts", 
+    "financial", 
+    "burden", 
+    "cost", 
+    "Social Security", 
+    "ability", 
+    "bear", 
+    "changes", 
+    "legal right", 
+    "public policy", 
+    "20 percent", 
+    "general tax revenues", 
+    "observers", 
+    "think", 
+    "whole"
+]
+
+2024-06-22 17:40:12,160 - INFO - Bolded words list: ['insolvency', 'mean', 'massive', 'benefit', 'cuts', 'financial', 'burden', 'cost', 'Social', 'Security', 'ability', 'bear', 'changes', 'legal', 'right', 'public', 'policy', '20', 'percent', 'general', 'tax', 'revenues', 'observers', 'think', 'whole']
+2024-06-22 17:40:12,160 - INFO - Calling llm_get_text_to_highlight with underlined_text and tag_line.
+2024-06-22 17:40:14,349 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-06-22 17:40:14,399 - INFO - Highlighted text list: 
+[
+    "neither the cost of Social Security nor the federal government’s ability to bear that cost change very much when Social Security becomes insolvent.",
+    "The only thing that changes is that Social Security would no longer have the legal right to call upon federal resources over and above its own dedicated taxes.",
+    "Continuing such transfers would prevent a 20 percent across-the-board cut in Social Security benefits, hardly a trivial matter.",
+    "But neither of these important facts should lead observers to conclude that the insolvency of Social Security would in fact lead to massive benefit cuts or an increased financial burden on the federal government as a whole."
+]
+
+2024-06-22 17:40:14,400 - INFO - Processing highlighted text
+2024-06-22 17:40:14,400 - INFO - Underlined text list: ['In this government-wide perspective, neither the cost of Social Security nor the federal government’s ability to bear that cost change very much when Social Security becomes insolvent.', 'The only thing that changes is that Social Security would no longer have the legal right to call upon federal resources over and above its own dedicated taxes.', 'Whether the federal government should nevertheless continue transferring those additional funds is a public policy argument, not an economic one.', 'Continuing such transfers would prevent a 20 percent across-the-board cut in Social Security benefits, hardly a trivial matter.', 'While having the Social Security trust fund does not make it easier for the federal government to pay Social Security benefits, the converse is that not having a Social Security trust fund would not make it harder to pay benefits.', 'In either case, Congress is transferring general tax revenues to Social Security and could, subject to the federal government’s resources, continue to do so.', 'But neither of these important facts should lead observers to conclude that the insolvency of Social Security would in fact lead to massive benefit cuts or an increased financial burden on the federal government as a whole.']
+2024-06-22 17:40:14,400 - INFO - Bolded text list: ['insolvency', 'mean', 'massive', 'benefit', 'cuts', 'financial', 'burden', 'cost', 'Social', 'Security', 'ability', 'bear', 'changes', 'legal', 'right', 'public', 'policy', '20', 'percent', 'general', 'tax', 'revenues', 'observers', 'think', 'whole']
+2024-06-22 17:40:14,401 - INFO - Highlighted text list: ['neither the cost of Social Security nor the federal government’s ability to bear that cost change very much when Social Security becomes insolvent.', 'The only thing that changes is that Social Security would no longer have the legal right to call upon federal resources over and above its own dedicated taxes.', 'Continuing such transfers would prevent a 20 percent across-the-board cut in Social Security benefits, hardly a trivial matter.', 'But neither of these important facts should lead observers to conclude that the insolvency of Social Security would in fact lead to massive benefit cuts or an increased financial burden on the federal government as a whole.']
+2024-06-22 17:40:14,403 - INFO - Final card formatting: {
+    "underline": [
+        "In this government-wide perspective, neither the cost of Social Security nor the federal government\u2019s ability to bear that cost change very much when Social Security becomes insolvent.",
+        "The only thing that changes is that Social Security would no longer have the legal right to call upon federal resources over and above its own dedicated taxes.",
+        "Whether the federal government should nevertheless continue transferring those additional funds is a public policy argument, not an economic one.",
+        "Continuing such transfers would prevent a 20 percent across-the-board cut in Social Security benefits, hardly a trivial matter.",
+        "While having the Social Security trust fund does not make it easier for the federal government to pay Social Security benefits, the converse is that not having a Social Security trust fund would not make it harder to pay benefits.",
+        "In either case, Congress is transferring general tax revenues to Social Security and could, subject to the federal government\u2019s resources, continue to do so.",
+        "But neither of these important facts should lead observers to conclude that the insolvency of Social Security would in fact lead to massive benefit cuts or an increased financial burden on the federal government as a whole."
+    ],
+    "bold": [
+        "insolvency",
+        "mean",
+        "massive",
+        "benefit",
+        "cuts",
+        "financial",
+        "burden",
+        "cost",
+        "Social",
+        "Security",
+        "ability",
+        "bear",
+        "changes",
+        "legal",
+        "right",
+        "public",
+        "policy",
+        "20",
+        "percent",
+        "general",
+        "tax",
+        "revenues",
+        "observers",
+        "think",
+        "whole"
+    ],
+    "highlight": [
+        "neither the cost of Social Security nor the federal government\u2019s ability to bear that cost change very much when Social Security becomes insolvent.",
+        "The only thing that changes is that Social Security would no longer have the legal right to call upon federal resources over and above its own dedicated taxes.",
+        "Continuing such transfers would prevent a 20 percent across-the-board cut in Social Security benefits, hardly a trivial matter.",
+        "But neither of these important facts should lead observers to conclude that the insolvency of Social Security would in fact lead to massive benefit cuts or an increased financial burden on the federal government as a whole."
+    ]
+}
+2024-06-22 17:40:14,458 - INFO - 127.0.0.1 - - [22/Jun/2024 17:40:14] "POST / HTTP/1.1" 200 -
+2024-06-22 17:40:14,471 - INFO - 127.0.0.1 - - [22/Jun/2024 17:40:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-06-22 17:40:14,475 - INFO - 127.0.0.1 - - [22/Jun/2024 17:40:14] "GET /logs HTTP/1.1" 200 -
+2024-06-22 17:40:41,247 - INFO - 127.0.0.1 - - [22/Jun/2024 17:40:41] "GET /download/generated_cards/Insolvency%20does%20not%20mean%20massive%20benefit%20cuts%20or%20financial%20burden.docx HTTP/1.1" 200 -
+2024-06-22 17:47:21,660 - INFO - 127.0.0.1 - - [22/Jun/2024 17:47:21] "GET /logs HTTP/1.1" 200 -

@@ -9,7 +9,7 @@ def get_sources(tag_line, num_cards):
         {
             "role": "system",
             "content": (
-                "You are a researcher. Prioritize high-quality sources."
+                "You are a debate researcher. Prioritize high-quality sources. You will read through sources fully and ensure they support a given argument before providing them to the user."
             ),
         },
         {
@@ -17,8 +17,9 @@ def get_sources(tag_line, num_cards):
             "content": (
                 f"""Find {num_cards} sources supporting this argument: {tag_line}. Return your response as a JSON in this form:
     {{
-        "Source 1 URL": "10-word summary of main argument in source 1",
-        "Source 2 URL": "10-word summary of main argument in source 2"
+        "URL": "10-word summary of main argument in source 1",
+        ...
+        "URL": "10-word summary of main argument in source n"
     }}"""
             ),
         },

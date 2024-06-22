@@ -7,7 +7,7 @@ from docx.enum.text import WD_UNDERLINE
 from docx.enum.text import WD_COLOR_INDEX
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
-from scraper_test import *
+from scraper import *
 from tools import *
 import time
 from datetime import date
@@ -17,7 +17,7 @@ from research import *
 
 GPT_MODEL = "gpt-4o-2024-05-13"
 # Configure logging
-logging.basicConfig(filename='output.log', level=logging.INFO,
+logging.basicConfig(filename='logs/output.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 def llm_get_text_to_underline(body_text: str, tag_line: str) -> list:
@@ -278,8 +278,9 @@ def nearest_word_neighbors_equal(list_one, list_two, index_one, index_two) -> bo
         logging.info(f'Nearest words are not equal')
         return False
     
-def format_card(article_info: dict, tag: str, all_text: str, underlined_text_list: list, bolded_text_list: list, highlighted_text_list: list) -> None:
-    """Produces word document. Underlines, bolds, and highlights words in the word document."""
+def format_card(article_info: dict, tag: str, all_text: str, underlined_text_list: list, bolded_text_list: list, highlighted_text_list: list) -> str:
+    """Produces word document. Underlines, bolds, and highlights words in the word document.
+    Returns filepath of saved word document."""
     
     if __debug__:
         start_time = time.time()
@@ -320,7 +321,7 @@ def format_card(article_info: dict, tag: str, all_text: str, underlined_text_lis
         else:
             word_dict[word] = [index]
     # Print word_dict to words_debug.txt
-    with open('words_debug.txt', 'w', encoding='utf-8') as f:
+    with open('logs/words_debug.txt', 'w', encoding='utf-8') as f:
         f.write(str(word_dict))
     
     # Remove bad characters from words
@@ -331,7 +332,7 @@ def format_card(article_info: dict, tag: str, all_text: str, underlined_text_lis
         text_elements[index] = ' '
     
     # Print words to words_list.txt
-    with open('words_list.txt', 'w', encoding='utf-8') as f:
+    with open('logs/words_list.txt', 'w', encoding='utf-8') as f:
         f.write(str(text_elements))
 
     # Process bolded_elements
@@ -377,15 +378,15 @@ def format_card(article_info: dict, tag: str, all_text: str, underlined_text_lis
     highlighted_elements = cleaned_highlighted_elements
 
     # Write highlighted elements to highlighted_debug.txt
-    with open('highlighted_debug.txt', 'w') as f:
+    with open('logs/highlighted_debug.txt', 'w') as f:
         for element in highlighted_elements:
             f.write(element + '\n')
     # Write underlined_elements to underlined_debug.txt
-    with open('underlined_debug.txt', 'w') as f:
+    with open('logs/underlined_debug.txt', 'w') as f:
         for element in underlined_elements:
             f.write(element + '\n')
     # Write bolded elements to bolded_debug.txt
-    with open('bolded_debug.txt', 'w') as f:
+    with open('logs/bolded_debug.txt', 'w') as f:
         for element in bolded_elements:
             f.write(element + '\n')
 
@@ -435,7 +436,7 @@ def format_card(article_info: dict, tag: str, all_text: str, underlined_text_lis
     
     # Print formatting table to debug.txt
     if __debug__:
-        with open('debug.txt', 'w') as f:
+        with open('logs/debug.txt', 'w') as f:
             for row in formatting_table:
                 f.write(str(row) + '\n')
     doc = Document()
@@ -512,25 +513,31 @@ def format_card(article_info: dict, tag: str, all_text: str, underlined_text_lis
 
             
     add_run_to_paragraph(p, runs[run_index], curr_run_underline, curr_run_bold, curr_run_highlight)
-    
-    doc.save(f'{tag}.docx')
-    print(f"Document {tag}.docx created successfully")
+    filepath = f'generated_cards/{tag}.docx'
+    doc.save(filepath)
+    print(f"Document generated_cards/{tag}.docx created successfully")
     if __debug__:
         print(f"Formatting execution time: {time.time() - start_time} seconds")
-                
+    return filepath
 
-def cut_card(tag: str, url: str) -> None:
+def cut_card(tag: str, url: str) -> str | None:
+    """Returns filepath of the cut card"""
     if __debug__:
         start_time = time.time()
 
     # Scrape article info (author, date, title, body)
     article_info = scrape_article(url)
     if article_info is None:
-        return
+        return None
     # Remove any double-quotes in the article body and replace with single quotes
+    # Check if article_info is a string
     if 'body' in article_info:
+        print(json.dumps(article_info, indent=4))
         article_info['body'] = article_info['body'].replace('"', "'")
     else:
+        print("Article info has no body or is a string. Scrape failed or URL JSON incorrectly formatted. Check logs.")
+        # Update logs
+        logging.info('Scrape failed or URL JSON incorrectly formatted.')
         return None
     
     if __debug__:
@@ -539,7 +546,7 @@ def cut_card(tag: str, url: str) -> None:
         
     if article_info is None:
         print("Failed to scrape article. Exiting...")
-        return          
+        return None      
     
     # Pass the extracted information to the card cutting function
     title = article_info['title']
@@ -553,7 +560,7 @@ def cut_card(tag: str, url: str) -> None:
     underlined_text_list, bolded_text_list, highlighted_text_list = llm_cut_article(title, author, date, body_text, tag_line)
     
     if underlined_text_list is None:
-        return
+        return None
     
     # Prepare a dictionary for JSON serialization (excluding the set)
     card_formatting = {
@@ -566,10 +573,12 @@ def cut_card(tag: str, url: str) -> None:
     # Log the output
     logging.info(f'Final card formatting: {json.dumps(card_formatting, indent=4)}')
     
-    format_card(article_info, tag, body_text, underlined_text_list, bolded_text_list, highlighted_text_list)
+    filepath = format_card(article_info, tag, body_text, underlined_text_list, bolded_text_list, highlighted_text_list)
     
     if __debug__:
         print(f"Card cutting execution time: {time.time() - start_time} seconds")
+    
+    return filepath
     
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Process argument.")
@@ -577,7 +586,6 @@ if __name__ == '__main__':
     parser.add_argument('num_cards', type=str, help='The number of cards you want!')
 
     args = parser.parse_args()
-
     sources_and_tags = get_sources(args.argument, args.num_cards)
     
     if sources_and_tags == {}: # re-try once
@@ -585,6 +593,8 @@ if __name__ == '__main__':
         if sources_and_tags == {}:
             exit
     
+    # Log sources_and_tags JSON
+    logging.info(f'Sources and tags: {json.dumps(sources_and_tags, indent=4)}')
     for source, tag in sources_and_tags.items():
         cut_card(tag, source)
 

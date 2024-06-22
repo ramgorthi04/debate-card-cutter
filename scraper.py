@@ -1,80 +1,124 @@
 import requests
+from requests.exceptions import MissingSchema
+import fitz  # PyMuPDF
+from io import BytesIO
 from bs4 import BeautifulSoup
-from http.client import RemoteDisconnected
-from requests.exceptions import Timeout
 
-def scrape_article(url) -> dict:
-    """
-    Returns title, body, author, date, qualifications, publication, url"""
+def extract_text_from_pdf_content(pdf_content):
     try:
-        page = requests.get(url, timeout=10, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'})
-    except requests.exceptions.ConnectionError as e:
-        if isinstance(e.args[0], RemoteDisconnected):
-            print("Failed to scrape article")
-            print("RemoteDisconnected: The remote end closed connection without response")
-        else:
-            print("Failed to scrape article")
-            print("Other ConnectionError occurred")
-        return None
-    except Timeout:
-        print("Failed to scrape article")
-        print("The request timed out after 10 seconds.")
-        return None
+        document = fitz.open(stream=pdf_content, filetype="pdf")
+        text = ""
+        for page_num in range(document.page_count):
+            page = document.load_page(page_num)
+            text += page.get_text()
+        return text
     except Exception as e:
-        print("Failed to scrape article")
-        print(f"An unexpected error occurred: {e}")
-        return None
+        print(f"Error reading PDF content: {e}")
+        return ""
 
-    if page.status_code != 200:
-        print(f"Failed to retrieve the webpage, status code: {page.status_code}")
-        return None
+def extract_metadata_from_text(text):
+    lines = text.split('\n')
+    author = None
+    date_published = None
+    publisher = None
+    title = None
+    author_qualifications = None
+    body_start_index = 0
 
-    soup = BeautifulSoup(page.content, "html.parser")
+    for i, line in enumerate(lines):
+        if 'author' in line.lower():
+            author = line.split(':', 1)[-1].strip()
+        elif 'published' in line.lower() or 'date' in line.lower():
+            date_published = line.split(':', 1)[-1].strip()
+        elif 'publisher' in line.lower():
+            publisher = line.split(':', 1)[-1].strip()
+        elif 'qualification' in line.lower() or 'degree' in line.lower():
+            author_qualifications = line.split(':', 1)[-1].strip()
+        elif title is None and len(line.strip()) > 0:
+            title = line.strip()
+            body_start_index = i + 1
 
-    # Extract title
-    title_tag = soup.find('h1')
-    title = title_tag.get_text() if title_tag else 'No title found'
+    body_text = '\n'.join(lines[body_start_index:])
 
-    # Extract body with preserved paragraph breaks
-    paragraphs = soup.find_all("p")
-    body = "\n\n".join([p.get_text() for p in paragraphs]) if paragraphs else 'No body found'
-
-    # Extract author
-    author_tag = soup.find('span', class_='story-meta__author')
-    author = author_tag.get_text().strip() if author_tag else 'No author'
-
-    # Extract date
-    date_tag = soup.find('time', class_='timestamp')
-    date = date_tag.get_text().strip() if date_tag else 'No date'
-
-    # Extract author qualifications
-    qualifications_tag = soup.find('span', class_='author-qualifications')
-    qualifications = qualifications_tag.get_text().strip() if qualifications_tag else 'No qualifications found'
-
-    # Extract publication/journal name
-    publication_tag = soup.find('span', class_='publication-name')
-    publication = publication_tag.get_text().strip() if publication_tag else 'No publication found'
-
-    # # Print the results
-    # print(f'Title: {title}')
-    # print(f'Author: {author}')
-    # print(f'Date: {date}')
-    # print('-' * 80)
-    # print(f'Body: {body}') 
-    if __debug__:
-        print(body)
     return {
-        'title': title,
-        'body': body,
-        'author': author,
-        'date': date,
-        'qualifications': qualifications,
-        'publication': publication,
-        'url': url
+        "title": title,
+        "author": author,
+        "qualifications": author_qualifications,
+        "date": date_published,
+        "publication": publisher,
+        "body": body_text
     }
 
-    
-if __name__ == '__main__':
-    # URL of the article to scrape
-    url = 'https://www.federalreserve.gov/econres/feds/redistribution-and-the-monetary-fiscal-policy-mix.htm'
-    scrape_article(url)
+def extract_metadata_from_html(html_content):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    title = soup.find('title').text if soup.find('title') else None
+    author = None
+    date_published = None
+    publisher = None
+    author_qualifications = None
+
+    # Add more sophisticated parsing if the website has specific metadata tags
+    if soup.find('meta', {'name': 'author'}):
+        author = soup.find('meta', {'name': 'author'})['content']
+    if soup.find('meta', {'name': 'date'}):
+        date_published = soup.find('meta', {'name': 'date'})['content']
+    if soup.find('meta', {'name': 'publisher'}):
+        publisher = soup.find('meta', {'name': 'publisher'})['content']
+    if soup.find('meta', {'name': 'qualification'}):
+        author_qualifications = soup.find('meta', {'name': 'qualification'})['content']
+
+    body_text = ''
+    if soup.find('body'):
+        body_text = ' '.join([p.text for p in soup.find_all('p')])
+    body_text = body_text.replace('"', "'")
+    return {
+        "title": title,
+        "author": author,
+        "qualifications": author_qualifications,
+        "date": date_published,
+        "publication": publisher,
+        "body": body_text
+    }
+
+def scrape_article(url):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # Raise an HTTPError for bad responses (4xx and 5xx)
+
+        content_type = response.headers.get('Content-Type', '')
+
+        if 'application/pdf' in content_type:
+            pdf_content = BytesIO(response.content)
+            print("PDF content fetched successfully!")
+            pdf_text = extract_text_from_pdf_content(pdf_content)
+            metadata = extract_metadata_from_text(pdf_text)
+        elif 'text/html' in content_type:
+            print("HTML content fetched successfully!")
+            html_content = response.content
+            metadata = extract_metadata_from_html(html_content)
+        else:
+            print(f"Scrape failed, unsupported content type: {content_type}")
+            return None
+
+        metadata['url'] = url
+        return metadata
+
+    except MissingSchema as e:
+        print(f"Error: {e}")
+        return None
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTPError: {e}")
+        return None
+    except requests.exceptions.RequestException as e:
+        print(f"RequestException: {e}")
+        return None
+
+# Example usage:
+if __name__ == "__main__":
+    url = "https://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article=2696&context=law_and_economics"
+    article_info = scrape_article(url)
+    print(article_info)

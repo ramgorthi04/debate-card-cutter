@@ -4,3 +4,4 @@ html5lib
 openai
 python-docx
 nltk
+flask
